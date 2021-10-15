@@ -2,6 +2,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
   def change
     create_table :orders do |t|
       
+      t.integer :customer_id
       t.string :postal_code, null: false, default: ""
       t.string :address, null: false, default: ""
       t.string :name, null: false, default: ""
