@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
   
-  namespace :customer do
-    get 'addresses/index'
-    get 'addresses/create'
-    get 'addresses/edit'
-    get 'addresses/update'
-    get 'addresses/destroy'
-  end
+
   root to: 'customer/customers#top'
   get 'about' => 'customer/customers#about'
 
