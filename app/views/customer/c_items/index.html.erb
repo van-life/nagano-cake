@@ -1,0 +1,12 @@
+<h2>商品一覧</h2>
+<p>全<%= @items.count %>件</p> 
+<!-- @items.total_countで全レコードの取得kaminari-->
+<% @items.each do |item|  %>
+<%= attachment_image_tag(item, :image, size: "100x100", fallback: "no_image.png") %>
+<%= item.name %>
+<%= "￥#{item.price*1.1}" %>
+<% end %>
+<%= paginate @items %>
+<!--画像、名前のリンク設定-->
+<!--kaminari pagenate-->
+<!--tax = 1.1 の記述-->
