@@ -1,0 +1,2 @@
+module Customer::COrdersHelper
+end
