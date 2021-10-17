@@ -7,7 +7,7 @@ class Customer::CItemsController < ApplicationController
   end
   
   def show
-    @item = @item.find(params[:id])
+    @item = Item.find(params[:id])
     @cart_items = CartItems.new
   end
 end
