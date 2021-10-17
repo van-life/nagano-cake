@@ -2,8 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'customer/customers#top'
   get 'about' => 'customer/customers#about'
-
-
+  
   namespace :customer do
     resources :customers, only: [:show, :edit, :update]
     get 'customers/end' => 'customers#end'
