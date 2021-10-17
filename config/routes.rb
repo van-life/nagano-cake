@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # テスト
+
   root to: 'customer/customers#top'
   get 'about' => 'customer/customers#about'
 
