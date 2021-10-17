@@ -1,7 +1,7 @@
 class Customer::AddressesController < ApplicationController
   def index
-    #customer = Customer.find(params[:id])
-    #@addresses = customer.addresses
+    customer = Customer.find(current_user.id)
+    @addresses = customer.addresses
   end
 
   def create
@@ -20,7 +20,7 @@ class Customer::AddressesController < ApplicationController
     if @address.user == current_user
       render :edit
     else
-      redirect_to books_path
+      redirect_to customer_addresses
     end
   end
 
