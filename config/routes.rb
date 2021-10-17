@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  # テスト
+
   root to: 'customer/customers#top'
   get 'about' => 'customer/customers#about'
 
-
   scope module: :customer do
     resource :customers, only: [:show, :edit, :update]
+
     get 'customers/end' => 'customers#end'
     patch 'customers/out' => 'customers#out'
 
@@ -43,3 +43,5 @@ Rails.application.routes.draw do
   }
 
 end
+
+

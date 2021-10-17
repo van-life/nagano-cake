@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <%= form_with model:@adress, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :postal_code %><br />
+      <%= f.text_field :postal_code, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :address %><br />
+      <%= f.text_area :address, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "新規登録", class: "btn btn-sm btn-success" %>
+    </div>
+    <% end %>
+  </div>
+  
+  <div class="row">
+    <table class="table tabel-hover table-inverse">
+    <thead>
+      <tr>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>宛名</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tr>
+    </table>
+  </div>
+
+</div>
