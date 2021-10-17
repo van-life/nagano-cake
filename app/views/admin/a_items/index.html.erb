@@ -1,0 +1,34 @@
+
+<h2>商品一覧</h2>
+
+<!--商品の新規登録画面へのリンク-->
+<p><%= link_to '＋', new_admin_a_item_path %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @a_items.each do |a_item| %>  
+      <tr>
+        <td><%= a_item.id %></td>
+        <td><%= a_item.name %></td>
+        <td><%= a_item.price %></td>
+        <td><%= a_item.genre_id %></td>
+        <!--販売ステータスは後で編集-->
+        <% if a_item.status == true %>
+          <td>販売中</td>
+        <% else %>
+          <td>販売停止中</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
