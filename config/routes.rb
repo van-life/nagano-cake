@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root to: 'customer/customers#top'
   get 'about' => 'customer/customers#about'
   
@@ -41,3 +41,5 @@ Rails.application.routes.draw do
   }
 
 end
+
+
