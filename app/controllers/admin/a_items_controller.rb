@@ -6,6 +6,7 @@ class Admin::AItemsController < ApplicationController
     
   def new
     @a_item = Item.new
+    @genres = Genre.all
   end
     
   def create
@@ -23,6 +24,7 @@ class Admin::AItemsController < ApplicationController
     
   def edit
     @a_item = Item.find(params[:id])
+    @genres = Genre.all
   end
     
   def update

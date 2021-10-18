@@ -21,7 +21,7 @@
         <td><%= a_item.id %></td>
         <td><%= link_to a_item.name,admin_a_item_path(a_item.id) %></td>
         <td><%= a_item.price.to_s(:delimited) %></td>
-        <td><%= a_item.genre_id %></td>
+        <td><%= a_item.genre.name %></td>
         <!--販売ステータスは後で編集-->
         <% if a_item.status == true %>
           <td>販売中</td>
