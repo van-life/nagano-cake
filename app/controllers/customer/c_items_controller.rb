@@ -1,5 +1,5 @@
 class Customer::CItemsController < ApplicationController
-  before_action :authenticate_customer!, only: [:show]
+  # before_action :authenticate_customer!, only: [:show]
   
   def index
     # statusカラムの記述方法によって変更する
