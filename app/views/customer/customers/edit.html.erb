@@ -1,4 +1,4 @@
-<%= form_with model: @customer, local: true do |f| %>
+<%= form_with model: @customer, url: customers_path, local: true do |f| %>
   <div class="form-group">
     <%= f.label :first_name, "氏名" %>
     <%= f.text_field :first_name, value: @customer.first_name %>
@@ -14,8 +14,8 @@
   <%= f.text_field :postal_code, value: @customer.postal_code %>
   </div>
   <div class="form-group">
-  <%= f.label :adress, "住所" %>
-  <%= f.text_area :adress, value: @customer.adress %>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address, value: @customer.address %>
   </div>
   <div class="form-group">
   <%= f.label :telephone_number, "電話番号" %>

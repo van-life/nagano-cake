@@ -8,6 +8,6 @@ class Customer::CItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-    @cart_items = CartItems.new
+    @cart_items = CartItem.new
   end
 end
