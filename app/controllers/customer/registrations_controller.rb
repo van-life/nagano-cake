@@ -61,6 +61,6 @@ class Customer::RegistrationsController < Devise::RegistrationsController
   # end
   private
   def after_sign_up_path_for(resource) #サインアップ後移行ページ
-     customer_path
+     customers_path(current_cus)
   end
 end
