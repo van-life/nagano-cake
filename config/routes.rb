@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :customer do
+    get 'cart_items/index'
+  end
   root to: 'customer/customers#top'
   get 'about' => 'customer/customers#about'
 
