@@ -5,11 +5,11 @@
   <% if flash[:alert] %>
     <p><%= flash[:alert] %></p>
   <%end%>
-  
+
   <div>
     <h2>ジャンル編集</h2>
   </div>
-  
+
   <div>
     <%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
       <b><%= f.label :name, "ジャンル名" %></b>
