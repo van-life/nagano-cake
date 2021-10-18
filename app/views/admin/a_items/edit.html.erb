@@ -1,7 +1,7 @@
 
 <h2>商品編集</h2>
 
-<%= form_with model:@item, url:admin_a_items_path, local:true do |f| %>
+<%= form_with model:@a_item, url:admin_a_item_path, local:true do |f| %>
   <table>
     <tr>
       <th>商品画像</th>
@@ -34,6 +34,6 @@
     </tr>
   </table>
   
-  <%= f.submit '新規登録' %>
+  <%= f.submit '変更を保存' %>
 <% end %>
   
