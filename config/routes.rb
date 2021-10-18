@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   scope module: :customer do
     resource :customers, only: [:show, :edit, :update]
 
-    get 'customers/end' => 'customers#end'
+    get 'customers/quit' => 'customers#quit'
     patch 'customers/out' => 'customers#out'
 
     resources :cart_items, only: [:index, :create, :update, :destroy]
