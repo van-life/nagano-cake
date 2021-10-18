@@ -1,0 +1,27 @@
+<h1>ショッピングカート</h1>
+
+<table class="table tabel-hover table-inverse">
+<thead>
+  <tr>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  <% @sum = 0 %>
+  <% @cart_items.each do |cart_item| %>
+  <tr>
+    <td><%= cart_item.items.name %></td>
+    <td><%= cart_item.items.price*1.1 %></td>
+    <td><%= cart_item.quentity %></td>
+    <td><%= cart_item.total_price.to_i %></td>
+    <td><%= link_to "削除する" , cart_item_path, method: :delete %></td>
+  </tr>
+  <% @sum += cart_item.total_price.to_i %>
+  <% end %>
+  <td>合計金額<%= @sum %></td>
+</tr>
+</table>

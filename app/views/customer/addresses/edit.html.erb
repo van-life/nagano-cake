@@ -1,2 +1,21 @@
-<h1>Customer::Addresses#edit</h1>
-<p>Find me in app/views/customer/addresses/edit.html.erb</p>
+<h1>配送先編集</h1>
+<div class="row">
+  <%= form_with model:@adress, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :postal_code %>
+    <%= f.text_field :postal_code, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_area :address, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "変更内容を保存", class: "btn btn-sm btn-success" %>
+  </div>
+  <% end %>
+</div>
+

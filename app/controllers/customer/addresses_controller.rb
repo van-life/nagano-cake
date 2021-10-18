@@ -1,16 +1,17 @@
 class Customer::AddressesController < ApplicationController
+  
   def index
-    customer = Customer.find(current_user.id)
+    customer = Customer.find(current_costomer)
     @addresses = customer.addresses
   end
 
   def create
-    @addresses = Address.new(address_params)
-    @addresses.user_id = current_user.id
-    if @addresses.save
+    @address = Address.new(address_params)
+    @address.user_id = current_user.id
+    if @address.save
       redirect_to customer_addresses(current_user)
     else
-      @addresses = Address.customer
+      @address = Address.customer
       render :index
     end
   end
