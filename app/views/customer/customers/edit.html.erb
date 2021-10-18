@@ -1,0 +1,31 @@
+<%= form_with model: @customer, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :first_name, "氏名" %>
+    <%= f.text_field :first_name, value: @customer.first_name %>
+    <%= f.text_field :last_name, value: @customer.last_name %>
+　</div>
+　<div class="form-group">
+  <%= f.label :first_name_kana, "フリガナ" %>
+  <%= f.text_field :first_name_kana, value: @customer.first_name_kana %>
+  <%= f.text_field :last_name_kana, value: @customer.last_name_kana %>
+  </div>
+  <div class="form-group">
+  <%= f.label :postal_code, "郵便番号" %>
+  <%= f.text_field :postal_code, value: @customer.postal_code %>
+  </div>
+  <div class="form-group">
+  <%= f.label :adress, "住所" %>
+  <%= f.text_area :adress, value: @customer.adress %>
+  </div>
+  <div class="form-group">
+  <%= f.label :telephone_number, "電話番号" %>
+  <%= f.text_field :telephone_number, value: @customer.telephone_number %>
+  </div>
+  <div class="form-group">
+  <%= f.label :email, "メールアドレス" %>
+  <%= f.text_field :email, value: @customer.email %>
+  </div>
+  
+  <%= f.submit "編集内容を保存"%>
+  <%= link_to "退会する", customers_quit_path(current_customer) %>
+<% end %>
