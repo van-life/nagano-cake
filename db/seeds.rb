@@ -8,7 +8,7 @@
 
 # 以下、のちに削除（しうへい）
 Customer.create!(
-  email: 'd@gmail.com',
+  email: 'e@gmail.com',
   password: 'aaaaaaa',
   first_name: 'a',
   last_name: 'a',
@@ -21,7 +21,7 @@ Customer.create!(
 )
 
 Order.create!(
-  customer_id: '4',
+  customer_id: '5',
   postal_code: '1111111',
   address: 'a',
   name: 'a',
@@ -30,14 +30,14 @@ Order.create!(
 
 OrderItem.create!(
   item_id: '1',
-  order_id: '4',
+  order_id: '5',
   quantity: '3',
   price: '500'
   )
   
 OrderItem.create!(
 item_id: '2',
-order_id: '4',
+order_id: '5',
 quantity: '4',
 price: '1000'
 )

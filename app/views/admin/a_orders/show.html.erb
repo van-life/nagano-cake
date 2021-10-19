@@ -4,7 +4,7 @@
 <table>
   <tr>
     <th>購入者</th>
-    <td><%= @order.customer_id %></td>
+    <td><%= @order.customer.first_name %> <%= @order.customer.last_name %></td>
   </tr>
   <tr>
     <th>注文日</th>
@@ -70,7 +70,7 @@
   <tbody>
     <% @item.each do |item| %>  
       <tr>
-        <td><%= item.item_id %></td>
+        <td><%= item.item.name %></td>
         <td><%= item.price %></td>
         <td><%= item.quantity %></td>
         <td><%= item.price * item.quantity %></td>
