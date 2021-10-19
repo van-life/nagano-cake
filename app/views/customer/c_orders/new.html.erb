@@ -1,0 +1,28 @@
+<%= form_with model: @order, url:c_order_path(@order),method: :post ,local: true do |f| %>
+  <h3>支払方法</h3>
+  <%= f.radio_button :payment, :クレジットカード, checked: true %><span>クレジットカード</span>
+  <%= f.radio_button :payment, :銀行振込 %><span>銀行振込</span>
+  
+  <h3>お届け先</h3>
+  <%= f.radio_button :address, "current_customer_address" ,checked: true %>
+  <span>ご自身の住所</span><br>
+  <%= "〒#{current_customer.postal_code current_customer.address}" %><br>
+  <%= current_customer.first_name+current_customer.last_name %>
+  
+  <% if @addresses %>
+    <%= f.radio_button :address, "registratoin_address" %>
+    <span>登録住所から選択</span>
+    <%= f.collection_select(:address_id, @addresses, :id, :order_address) %>
+  <% end %>
+  
+  <%=f.radio_button :address, "new_address" %>
+  <span>新しいお届け先</span><br>
+  <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+  <%= f.text_field :postal_code %>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %>
+  <%= f.label :name, "宛名" %>
+  <%= f.text_field :name %>
+  <%= f.submit "確認画面へ進む" %>
+<% end %>
+  
