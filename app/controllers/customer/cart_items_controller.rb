@@ -1,36 +1,47 @@
 class Customer::CartItemsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_customer!
     
   def index
-    @cart_items = Cart_item.find_by(customer_id: current_user.id)
+    customer = Customer.find(current_customer.id)
+    @cart_items = customer.cart_items
   end
   
   def create
-    item = Item.find(params[:item_id])
-    cart_item = Cart_item.new(cart_item_params)
+    cart_item = CartItem.new(cart_item_params)
     cart_item.customer_id = current_customer.id
-    cart_item.item_id = item.id
+    if cart_item.save
+      redirect_to cart_items_path
+    else
+      render :index
+    end
   end
   
   def update
-    cart_item = Cart_item.find(params[:id])
-    cart_item.update(cart_item_params)
+    cart_item = CartItem.find(params[:id])
+    if cart_item.update(cart_item_params)
+      redirect_to cart_items_path
+    else
+      render :index
+    end
   end
   
   def destroy
-    cart_item = Cart_item.find(params[:id])
+    cart_item = CartItem.find(params[:id])
     cart_item.destroy
+     redirect_to cart_items_path
   end
   
   def all_destroy
-    cart_items = Cart_item.find_by(customer_id: current_user.id)
+    customer = Customer.find(current_customer.id)
+    cart_items = customer.cart_items
     cart_items.destroy_all
+    redirect_to cart_items_path
   end
   
   private 
   
   def cart_item_params
-    params.require(:cat_item).permit(:quantity)
+    params.require(:cart_item).permit(:quantity, :item_id)
   end
   
 end

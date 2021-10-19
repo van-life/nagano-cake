@@ -5,10 +5,20 @@ class Admin::AOrdersController < ApplicationController
   end
   
   def show
-    @a_order = Order.find(params[:id])
+    @order_status = Order.find(params[:id])
+    @item_status = OrderItem.find(params[:id])
   end
   
-  def update
+  def order_status
+    @order_status = Order.find(params[:id])
+    @order_status.update
+    redirect_to admin_a_orders_path
+  end
+  
+  def item_status
+    @item_status = OrderItem.find(params[:id])
+    @item_status.update
+    redirect_to admin_a_orders_path
   end
   
 end
