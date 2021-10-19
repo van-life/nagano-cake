@@ -4,49 +4,53 @@
 <table>
   <tr>
     <th>購入者</th>
-    <td><%= @order_status.customer.name %></td>
+    <td><%= @order.customer_id %></td>
   </tr>
   <tr>
     <th>注文日</th>
-    <td><%= @order_status.created_at %></td>
+    <td><%= @order.created_at %></td>
   </tr>
   <tr>
     <th>配送先</th>
     <td>
-      <%= @order_status.postal_code %><%= @order_status.address %><br>
-      <%= @order_status.name %>
+      <%= @order.postal_code %><%= @order.address %><br>
+      <%= @order.name %>
     </td>
   </tr>
   <tr>
     <th>支払方法</th>
     <td>
-      <%= @order_status.payment %>
+      <%= @order.payment %>
     </td>
   </tr>
   <tr>
     <th>注文ステータス</th>
     <td>
-      <% if @order_status.create_status == 0 %>
-          <p>入金待ち</p>
-        
-          <%= form_with model:@order_status, url:"admin/a_orders#order_status", local:true do |f| %>
-            <%= f.select:create_status, {'入金待ち':0, '入金確認':1} %>
-            <%= f.submit '変更を保存' %>
-          <% end %>
-        <% elsif  @order_status.create_status == 1 %>
-          <p>入金確認</p>
-        <% elsif  @order_status.create_status == 1 && (注文ステータスが1つでも「2」になったら) %>
-          <p>制作中</p>
-        <% elsif  @order_status.create_status == 1 && (注文ステータスが全て「2」になったら) %>
-          <p>発送準備中</p>
-          
-          <%= form_with model:@order_status, url:"admin/a_orders#order_status", local:true do |f| %>
-            <%= f.select:create_status, {'発送準備中':1, '発送済み':2} %>
-            <%= f.submit '変更を保存' %>
-          <% end %>
-        <% elsif  @order_status.create_status == 2 %>
-          <p>発送済み</p>
+      <% if @order.order_status == 0 %>
+        <%= form_with model:@order, url:admin_path(@order.id), local:true do |f| %>
+          <%= f.select:order_status, {'入金待ち':0, '入金確認':1} %>
+          <%= f.submit '変更を保存' %>
         <% end %>
+      <% elsif @order.order_status == 1 %>
+        <% if (!@item.where(create_status:1).exists?) && (!@item.where(create_status:2).exists?) %>
+          <%= form_with model:@order, url:admin_path(@order.id), local:true do |f| %>
+            <%= f.select:order_status, {'入金待ち':0, '入金確認':1} %>
+            <%= f.submit '変更を保存' %>
+          <% end %>
+        <% elsif (!@item.where(create_status:0).exists?) && (!@item.where(create_status:1).exists?) %>
+          <%= form_with model:@order, url:admin_path(@order.id), local:true do |f| %>
+            <%= f.select:order_status, {'発送準備中':1, '発送済み':2} %>
+            <%= f.submit '変更を保存' %>
+          <% end %>
+        <% else %>
+          製作中
+        <% end %>
+      <% else %>
+        <%= form_with model:@order, url:admin_path(@order.id), local:true do |f| %>
+          <%= f.select:order_status, {'発送準備中':1, '発送済み':2} %>
+          <%= f.submit '変更を保存' %>
+        <% end %>
+      <% end %>
     </td>
   </tr>
 </table>
@@ -64,17 +68,23 @@
   </thead>
   
   <tbody>
-    <% @orders_items.each do |order_item| %>  
+    <% @item.each do |item| %>  
       <tr>
-        <td><%= order_item.name %></td>
-        <td><%= order_item.price %></td>
-        <td><%= order_item.quantity %></td>
-        <td><%= order_item.price * order_item.quantity %></td>
+        <td><%= item.item_id %></td>
+        <td><%= item.price %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.price * item.quantity %></td>
         <td>
-          <% if @item_status.create_status == 0 %>
-            <p>着手不可</p>
-        　<% elsif @item_status.create_status == 1 %>
-        　　  <p> 
+          <% if @order.order_status == 0 %>
+            着手不可
+        　<% elsif @order.order_status == 1 %>
+        　   <%= form_with model:item, url:"/admin/a_orders/#{item.id}/item", local:true do |f| %>
+              <%= f.select:create_status, {'製作待ち':0, '製作中':1, '製作完了':2} %>
+              <%= f.submit '変更を保存' %>
+            <% end %>
+          <% else %>
+            製作完了
+        　<% end %> 
         </td>
       </tr>
     <% end %>
