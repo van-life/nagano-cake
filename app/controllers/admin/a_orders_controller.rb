@@ -5,20 +5,31 @@ class Admin::AOrdersController < ApplicationController
   end
   
   def show
-    @order_status = Order.find(params[:id])
-    @item_status = OrderItem.find(params[:id])
+    @order = Order.find(params[:id])
+    @item = OrderItem.where(order_id: params[:id])
   end
   
   def order_status
-    @order_status = Order.find(params[:id])
-    @order_status.update
-    redirect_to admin_a_orders_path
+    order = Order.find(params[:id])
+    order.update(order_params)
+    redirect_to admin_a_order_path(order.id)
   end
   
   def item_status
-    @item_status = OrderItem.find(params[:id])
-    @item_status.update
-    redirect_to admin_a_orders_path
+    item = OrderItem.find(params[:id])
+    item.update(item_params)
+    order_id = item.order_id
+    redirect_to admin_a_order_path(order_id)
+  end
+  
+  private
+  
+  def order_params
+    params.require(:order).permit(:order_status)
+  end
+  
+  def item_params
+    params.require(:order_item).permit(:create_status)
   end
   
 end
