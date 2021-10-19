@@ -1,18 +1,27 @@
-<% if customer_signed_in? %>
-  <P>ようこそ<%= current_customer.first_name %>さん!
-  <%= link_to "マイページ", customers_path(current_customer) %>
-  <%= link_to "商品一覧", c_items_path %>
-  <%= link_to "カート", cart_items_path %>
-  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-<% elsif admin_signed_in? %>
-  <%= link_to "商品一覧", admin_a_items_path %>
-  <%= link_to "会員一覧", admin_customers_path %>
-  <%= link_to "注文履歴一覧", admin_a_orders_path %>
-  <%= link_to "ジャンル一覧", admin_genres_path %>
-  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-<% else %>
-  <%= link_to "About", about_path %>
-  <%= link_to "商品一覧", c_items_path %>
-  <%= link_to "新規登録", new_customer_registration_path %>
-  <%= link_to "ログイン", new_customer_session_path %>
-<% end %>
+<header class="shadow-sm bg-warning">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <%= link_to image_tag("logo3.png", size: "200x50"), root_path, class: "image", alt: "ロゴ" %>
+      <div class="navbar nav-left">
+        <% if customer_signed_in? %>
+          <P>ようこそ<%= current_customer.first_name %>さん!
+          <%= link_to "マイページ", customers_path(current_customer), class: "btn btn-outline-light nav-menu-text btn-sm" %>
+          <%= link_to "商品一覧", c_items_path, class: "btn btn-outline-light nav-menu-text ms-4 btn-sm" %>
+          <%= link_to "カート", cart_items_path, class: "btn btn-outline-light ms-4 btn-sm" %>
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-light nav-menu-text ms-4 me-4 btn-sm" %>
+        <% elsif admin_signed_in? %>
+          <%= link_to "商品一覧", admin_a_items_path, class: "btn btn-outline-light nav-menu-text btn-sm" %>
+          <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-light nav-menu-text ms-4 btn-sm" %>
+          <%= link_to "注文履歴一覧", admin_a_orders_path, class: "btn btn-outline-light nav-menu-text ms-4 btn-sm" %>
+          <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-light ms-4 btn-sm" %>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-light nav-menu-text ms-4 me-4 btn-sm" %>
+        <% else %>
+          <%= link_to "About", about_path, class: "btn btn-outline-light ms-4 btn-sm" %>
+          <%= link_to "商品一覧", c_items_path, class: "btn btn-outline-light ms-4 btn-sm" %>
+          <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-light ms-4 btn-sm" %>
+          <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-light ms-4 btn-sm" %>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+</header>
