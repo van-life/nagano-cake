@@ -1,32 +1,54 @@
+<div class="container" style="padding-top: 30px;">
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-2 text-center d-flex align-items-center">
+      <h2 class="bg-info border-bottom" style="height: 50px;">商品 一覧</h2>
+    </div>
+    <div class="col-md-2">
+    </div> 
+    <div class="col-md-2">
+      <h5 class="btn btn-success"><%= link_to '新規作成', new_admin_a_item_path, class:"text-white", style:"text-decoration: none;"%></h5>
+    </div>
+    <div class="col-md-5">
+    </div>
+  </div>
+</div>
 
-<h2>商品一覧</h2>
-
-<p><%= link_to '＋', new_admin_a_item_path %></p>
-
-<table class="table row mt-4">
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  
-  <tbody>
-    <% @a_items.each do |a_item| %>  
-      <tr>
-        <td><%= a_item.id %></td>
-        <td><%= link_to a_item.name,admin_a_item_path(a_item.id) %></td>
-        <td><%= a_item.price.to_s(:delimited) %></td>
-        <td><%= a_item.genre.name %></td>
-        <% if a_item.status == true %>
-          <td>販売中</td>
-        <% else %>
-          <td>販売停止中</td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container-fluid" style="padding-top: 30px">
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-6">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% @a_items.each do |a_item| %>  
+            <tr>
+              <td><%= a_item.id %></td>
+              <td><%= link_to a_item.name,admin_a_item_path(a_item.id) %></td>
+              <td><%= a_item.price.to_s(:delimited) %></td>
+              <td><%= a_item.genre.name %></td>
+              <% if a_item.status == true %>
+                <td>販売中</td>
+              <% else %>
+                <td>販売停止中</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-5">
+    </div>
+  </div>
+</div>
