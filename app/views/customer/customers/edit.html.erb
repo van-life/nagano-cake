@@ -1,31 +1,43 @@
-<%= form_with model: @customer, url: customers_path, local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :first_name, "氏名" %>
-    <%= f.text_field :first_name, value: @customer.first_name %>
-    <%= f.text_field :last_name, value: @customer.last_name %>
-　</div>
-　<div class="form-group">
-  <%= f.label :first_name_kana, "フリガナ" %>
-  <%= f.text_field :first_name_kana, value: @customer.first_name_kana %>
-  <%= f.text_field :last_name_kana, value: @customer.last_name_kana %>
+<div class="container">
+  <div class="mt-3">
+    <span class="fs-3 offset-md-1 signup-form"><b>会員情報編集</b></span>
   </div>
-  <div class="form-group">
-  <%= f.label :postal_code, "郵便番号" %>
-  <%= f.text_field :postal_code, value: @customer.postal_code %>
-  </div>
-  <div class="form-group">
-  <%= f.label :address, "住所" %>
-  <%= f.text_field :address, value: @customer.address %>
-  </div>
-  <div class="form-group">
-  <%= f.label :telephone_number, "電話番号" %>
-  <%= f.text_field :telephone_number, value: @customer.telephone_number %>
-  </div>
-  <div class="form-group">
-  <%= f.label :email, "メールアドレス" %>
-  <%= f.text_field :email, value: @customer.email %>
-  </div>
-  
-  <%= f.submit "編集内容を保存"%>
-  <%= link_to "退会する", customers_quit_path(current_customer) %>
-<% end %>
+  <%= form_with model: @customer, url: customers_path, local: true do |f| %>
+    <div class="row mt-3">
+      <%= f.label :first_name, "名前", class:"offset-1 col-2" %>
+      （姓）　<%= f.text_field :first_name, class:"col-3", autofocus: true, value: @customer.first_name %>
+      （名）　<%= f.text_field :last_name, class:"col-3", value: @customer.last_name %>
+  　</div>
+  　
+  　<div class="row">
+      <%= f.label :first_name_kana, "フリガナ", class:"offset-1 col-2" %>
+      （セイ）<%= f.text_field :first_name_kana, class:"col-3", value: @customer.first_name_kana %>
+      （メイ）<%= f.text_field :last_name_kana, class:"col-3", value: @customer.last_name_kana %>
+    </div>
+    
+    <div class="row mt-3">
+      <%= f.label :email, "メールアドレス", class:"offset-1 col-2" %>
+      <%= f.text_field :email, class:"col-3", value: @customer.email %>
+    </div>
+    
+    <div class="row mt-3">
+      <%= f.label :postal_code, "郵便番号(ハイフンなし)", class:"offset-1 col-2" %>
+      <%= f.text_field :postal_code, class:"col-3", value: @customer.postal_code %>
+    </div>
+    
+    <div class="row mt-3">
+      <%= f.label :address, "住所", class:"offset-1 col-2" %>
+      <%= f.text_field :address, class:"col-6", value: @customer.address %>
+    </div>
+    
+    <div class="row mt-3">
+      <%= f.label :telephone_number, "電話番号(ハイフンなし)", class:"offset-1 col-2" %>
+      <%= f.text_field :telephone_number, class:"col-3", value: @customer.telephone_number %>
+    </div>
+    
+    <div class="actions offset-3 mt-3 mb-4">
+      <%= f.submit "編集内容を保存"%>
+      <%= link_to "退会する", customers_quit_path(current_customer) %>
+    </div>
+  <% end %>
+</div>
