@@ -13,7 +13,7 @@ class Admin::AItemsController < ApplicationController
   def create
     @a_item = Item.new(item_params)
     if @a_item.save
-      redirect_to admin_a_items_path
+      redirect_to admin_a_item_path(@a_item.id)
     else
       render :new
     end
