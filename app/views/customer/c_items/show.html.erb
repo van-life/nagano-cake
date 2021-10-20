@@ -13,7 +13,7 @@
         <% if customer_signed_in? %>
           <%= form_with(model: @cart_item , url: cart_items_path, local:true) do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>
-            <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %><br>
+            <%= f.select :quantity, options_for_select((1..10).to_a) %><br>
             <!--配列から選択肢の生成options_for_select-->
             <%= f.submit "カートに入れる" %>
           <% end %>
