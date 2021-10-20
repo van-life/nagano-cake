@@ -1,3 +1,34 @@
 // Place all the styles related to the customer/CItems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.item-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-box {
+  display: flex;
+  margin: 0 15px;
+  width: 250px;
+  border-top: solid 2px #eae8e3;
+}
+
+.item-image {
+  padding: 5px;
+}
+
+.item-detail {
+  padding: 5px;
+  width: 95%;
+}
+
+.index {
+  padding: 50px 0;
+  width: 100%;
+  height: auto;
+  background-image: image-url('honey.jpg');
+  background-size: cover;
+  background-position: 0 80%;
+}
