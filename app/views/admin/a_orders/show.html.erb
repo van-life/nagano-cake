@@ -4,7 +4,7 @@
 <table>
   <tr>
     <th>購入者</th>
-    <td><%= @order.customer_id %></td>
+    <td><%= @order.customer.first_name %> <%= @order.customer.last_name %></td>
   </tr>
   <tr>
     <th>注文日</th>
@@ -29,18 +29,18 @@
       <% if @order.order_status == 0 %>
         <%= form_with model:@order, url:admin_path(@order.id), local:true do |f| %>
           <%= f.select:order_status, {'入金待ち':0, '入金確認':1} %>
-          <%= f.submit '変更を保存' %>
+          <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
         <% end %>
       <% elsif @order.order_status == 1 %>
         <% if (!@item.where(create_status:1).exists?) && (!@item.where(create_status:2).exists?) %>
           <%= form_with model:@order, url:admin_path(@order.id), local:true do |f| %>
             <%= f.select:order_status, {'入金待ち':0, '入金確認':1} %>
-            <%= f.submit '変更を保存' %>
+            <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
           <% end %>
         <% elsif (!@item.where(create_status:0).exists?) && (!@item.where(create_status:1).exists?) %>
           <%= form_with model:@order, url:admin_path(@order.id), local:true do |f| %>
             <%= f.select:order_status, {'発送準備中':1, '発送済み':2} %>
-            <%= f.submit '変更を保存' %>
+            <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
           <% end %>
         <% else %>
           製作中
@@ -48,7 +48,7 @@
       <% else %>
         <%= form_with model:@order, url:admin_path(@order.id), local:true do |f| %>
           <%= f.select:order_status, {'発送準備中':1, '発送済み':2} %>
-          <%= f.submit '変更を保存' %>
+          <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
         <% end %>
       <% end %>
     </td>
@@ -70,7 +70,7 @@
   <tbody>
     <% @item.each do |item| %>  
       <tr>
-        <td><%= item.item_id %></td>
+        <td><%= item.item.name %></td>
         <td><%= item.price %></td>
         <td><%= item.quantity %></td>
         <td><%= item.price * item.quantity %></td>
@@ -80,7 +80,7 @@
         　<% elsif @order.order_status == 1 %>
         　   <%= form_with model:item, url:"/admin/a_orders/#{item.id}/item", local:true do |f| %>
               <%= f.select:create_status, {'製作待ち':0, '製作中':1, '製作完了':2} %>
-              <%= f.submit '変更を保存' %>
+              <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
             <% end %>
           <% else %>
             製作完了
@@ -89,4 +89,19 @@
       </tr>
     <% end %>
   </tbody>
+</table>
+
+<table>
+  <tr>
+    <th>商品合計</th>
+    <td><%= @item.all.sum(:price * quantity) %></td>
+  </tr>
+  <tr>
+    <th>送料</th>
+    <td><%= @order.postage %></td>
+  </tr>
+  <tr>
+    <th>請求合計額</th>
+    <td><%= (@item.all.sum(:price)) + (@order.postage) %></td>
+  </tr>
 </table>

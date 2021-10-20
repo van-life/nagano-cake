@@ -17,6 +17,7 @@ class Customer::COrdersController < ApplicationController
   end
   
   def confirm
+    
   end
   
   def update

@@ -16,6 +16,8 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import "slick-theme"; 
+@import "slick";
 
 
 .field_with_errors {
@@ -27,21 +29,24 @@
 
 .about-image {
   width: 100%;
-  height: 750px;
-  padding-top: 80px;
+  height: 900px;
+  padding-top: 60px;
   text-align: center;
-  text-shadow: white 0 0 5px;
-  background-image: image-url('nagano2.jpg');
+  text-shadow: white 0 0 3px;
+  background-image: image-url('nagano1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right top;
+}
+.about-image h4 a{
+  text-decoration: none;
 }
 
 .main_imgBox {
   height: 750px;
   overflow: hidden;
   position: relative;
-  opacity: 50%;
+  opacity: 70%;
 }
 
 .main_img {
@@ -80,7 +85,7 @@
 .main_img:nth-of-type(6) {
   -webkit-animation-delay: 30s;
   animation-delay: 30s; }
-  
+
 @keyframes anime {
   0% {
     opacity: 0;
@@ -107,3 +112,33 @@
   background-size: cover;
   background-position: 0 90%;
 }
+
+.main_top_box{
+  position: relative;
+}
+.main_top_box h3{
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:45px;
+  opacity: 95%;
+  color: #fff;
+}
+.main-text-box-full{
+  background: #CB0339;
+  border-radius: 80% 30% 50% 50%/50%;
+}
+
+.top-bg-center{
+  background-color: rgba(194, 153, 92,.5);
+}
+.top-bg-center a{
+  text-decoration: none;
+}
+
+
