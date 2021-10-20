@@ -4,10 +4,13 @@ class Customer::CItemsController < ApplicationController
   def index
     # statusカラムの記述方法によって変更する
     @items = Item.where(status: true).page(params[:page]).per(8)
+    @genres = Genre.all
+    @amount = @items.total_count
   end
   
   def show
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
+    @genres = Genre.all
   end
 end
