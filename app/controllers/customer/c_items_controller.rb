@@ -1,10 +1,10 @@
 class Customer::CItemsController < ApplicationController
-  before_action :authenticate_customer!, only: [:show]
+  # before_action :authenticate_customer!, only: [:show]
   
   def index
     # statusカラムの記述方法によって変更する
-    @items = Item.where(status: true).page(params[:page]).per(8)
     @genres = Genre.all
+    @items = Item.where(status: true).page(params[:page]).per(8)
     @amount = @items.total_count
   end
   
