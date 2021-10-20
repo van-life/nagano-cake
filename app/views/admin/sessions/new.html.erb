@@ -1,23 +1,25 @@
-<div>
-  <%= render "admin/shared/error_messages", resource: resource %>
-  <div class="mt-5 ms-5">
-    <span class="fs-3 bg-light">　<b>管理者ログイン</b>　</span>
+<div class="login">
+  <div class="container py-5 login-form">
+    <div class="row w-50 mx-auto shadow-lg bg-white bg-opacity-50 py-3">
+      <%= render "admin/shared/error_messages", resource: resource %>
+      <div class="mt-5">
+        <span class="fs-3 offset-md-1 font-monospace login-form">　<b>管理者ログイン</b>　</span>
+      </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inline">
+        <%= f.label :email, "メールアドレス", class: "offset-2 col-2 mt-3" %>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com", class: "col-5" %>
+      </div>
+  
+      <div class="field">
+        <%= f.label :password, "パスワード", class: "offset-2 col-2 mt-3" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "col-5" %>
+      </div>
+  
+      <div class="actions offset-4 mt-4">
+        <%= f.submit "　ログイン　", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
   </div>
-  <div class="admin_signin mt-5">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row justify-content-center">
-      <%= f.label :email, "メールアドレス", class: "col-2" %>
-      <%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com", class: "col-5" %>
-    </div>
-
-    <div class="row justify-content-center mt-3">
-      <%= f.label :password, "パスワード", class: "col-2" %>
-      <%= f.password_field :password, autocomplete: "current-password", class: "col-5" %>
-    </div>
-
-    <div class="row justify-content-center mt-5 mb-5">
-      <%= f.submit "　ログイン　", class: "btn btn-primary col-2" %>
-      <div class="col-1"></div>
-    </div>
-  <% end %>
 </div>
