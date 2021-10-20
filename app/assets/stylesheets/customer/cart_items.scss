@@ -1,3 +1,39 @@
 // Place all the styles related to the customer/cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.cart-total {
+  background-color: #fde4aa;
+  padding: 46px 8% 30px;
+}
+
+.total_price{
+  border-bottom: solid 1px #551937;
+  margin: 0 0 12px;
+}
+
+.cart-links {
+  display: block;
+}
+
+.shopping, .buy a {
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px; 
+  margin-bottom: 10px;
+  border: 1px solid #333333;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+}
+
+.buy a {
+  background-color: #ffc107;
+}
+
+
