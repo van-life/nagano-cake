@@ -18,7 +18,7 @@ class Customer::CustomersController < ApplicationController
   end
   
   def out
-    current_customer.update(is_deleted: false)
+    current_customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
   end
