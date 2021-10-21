@@ -21,7 +21,11 @@
       <div class="slider">
         <% @items.each do |item| %>
           <div class="col-3 px-2">
-            <%= render "customer/c_items/each_item", item: item %>
+            <%= link_to c_item_path(item) do %>
+               <%= attachment_image_tag item, :image, size: "411x274", fallback: "no_image.png" %>
+               <p class='font-weight-bold text-dark mt-2 mb-1'><b><%= item.name %></b></p>
+             <% end %>
+             <%= "￥"+tax(item.price).to_s(:delimited) %>
           </div>
         <% end %>
       </div>
