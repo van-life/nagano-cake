@@ -23,7 +23,7 @@
           <%= link_to "カート", cart_items_path, class: "btn btn-outline-light ms-4 btn-sm" %>
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-light nav-menu-text ms-4 me-4 btn-sm" %>
         <% elsif admin_signed_in? %>
-          <%= link_to "商品一覧", admin_a_items_path, class: "btn btn-outline-light nav-menu-text btn-sm" %>
+          <%= link_to "商品一覧", admin_a_items_path, class: "btn btn-outline-light nav-menu-text ms-4 btn-sm" %>
           <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-light nav-menu-text ms-4 btn-sm" %>
           <%= link_to "注文履歴一覧", admin_a_orders_path, class: "btn btn-outline-light nav-menu-text ms-4 btn-sm" %>
           <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-light ms-4 btn-sm" %>
