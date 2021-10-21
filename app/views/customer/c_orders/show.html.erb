@@ -21,7 +21,21 @@
     </tr>
       <tr>
       <th>ステータス</th>
-      <td><%= @order.order_status %></td>
+      <td>
+        <% if @order.order_status == 0 %>
+          入金待ち
+        <% elsif @order.order_status == 1 %>
+          <% if (!@order.order_items.where(create_status:1).exists?) && (!@order.order_items.where(create_status:2).exists?) %>
+            入金確認
+          <% elsif (!@order.order_items.where(create_status:0).exists?) && (!@order.order_items.where(create_status:1).exists?) %>
+            発送準備中
+          <% else %>
+            製作中
+          <% end %>
+        <% else %>
+          発送済み
+        <% end %>    
+      </td>
     </tr>
   </tbody>
 </table>
