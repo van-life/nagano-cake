@@ -1,39 +1,41 @@
+<div class="container">
+  <div class="mt-3">
+    <span class="fs-3 offset-md-1"><b>商品新規登録録</b></span>
+  </div>
 
-<h2>商品新規登録</h2>
-
-<%= form_with model:@a_item, url:admin_a_items_path, local:true do |f| %>
-  <table>
-    <tr>
-      <th>商品画像</th>
-      <td><%= f.attachment_field:image %></td>
-    </tr>
-    <tr>
-      <th>商品名</th>
-      <td><%= f.text_field:name %></td>
-    </tr>
-    <tr>
-      <th>商品説明</th>
-      <td><%= f.text_area:introduction %></td>
-    </tr>
-    <tr>
-      <th>ジャンル</th>
-      <td><%= f.select:genre_id, @genres.map{ |genre| [genre.name, genre.id] }, {include_blank:'--選択してください--'} %></td>
-    </tr>
-    <tr>
-      <th>税抜価格</th>
-      <td><%= f.text_field:price %></td>
-    </tr>
-    <tr>
-      <th>販売ステータス</th>
-      <td>
-        <%= f.radio_button :status, :true %>
-        <%= f.label :status, "販売中", {value: :true, style: "display: inline-block;"} %>
-        <%= f.radio_button :status, :false %>
-        <%= f.label :status, "販売停止中", {value: :false, style: "display: inline-block;"} %>
-      </td>
-    </tr>
-  </table>
-  
-  <%= f.submit '新規登録', class: "btn btn-sm btn-success" %>
-<% end %>
+  <%= form_with model:@a_item, url:admin_a_items_path, local:true do |f| %>
+  <div class="row mt-3">
+    <%= f.label :image, "商品画像", class:"offset-1 col-3" %>
+    <%= f.attachment_field :image, class:"col-6" %>
+  </div>
+  <div class="row mt-3">
+    <%= f.label :name, "商品名", class:"offset-1 col-3" %>
+    <%= f.text_field :name, class:"col-3" %>
+  </div>
+  <div class="row mt-3">
+    <%= f.label :introduction, "商品説明", class:"offset-1 col-3" %>
+    <%= f.text_area :introduction, class:"col-3" %>
+  </div>
+  <div class="row mt-3">
+    <%= f.label :genre_id, "ジャンル", class:"offset-1 col-3" %>
+    <%= f.select:genre_id, @genres.map{ |genre| [genre.name, genre.id] }, {include_blank:'--選択してください--'}, class:"col-3" %>
+  </div>
+  <div class="row mt-3">
+    <%= f.label :price, "税抜価格", class:"offset-1 col-3" %>
+    <%= f.text_field :price, class:"col-3" %>
+  </div>
+  <div class="row mt-3">
+    <div class="offset-1 col-3">
+      <%= f.label :status, "販売ステータス" %>
+    </div>
+    <div v class="col-4">
+      <%= f.radio_button :status, :true %><span><%= f.label :status, "販売中", {value: :true} %></span>
+      <%= f.radio_button :status, :false %><span><%= f.label :status, "販売停止中", {value: :false} %></span>
+    </div>
+  </div>
+  <div class="offset-4 mt-3 mb-4">
+    <%= f.submit '新規登録', class: "btn btn-sm btn-success" %>
+  </div>
+  <% end %>
+</div>
   

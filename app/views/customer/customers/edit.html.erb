@@ -4,38 +4,38 @@
   </div>
   <%= form_with model: @customer, url: customers_path, local: true do |f| %>
     <div class="row mt-3">
-      <%= f.label :first_name, "名前", class:"offset-1 col-2" %>
+      <%= f.label :first_name, "名前", class:"offset-1 col-3" %>
       （姓）　<%= f.text_field :first_name, class:"col-3", autofocus: true, value: @customer.first_name %>
       （名）　<%= f.text_field :last_name, class:"col-3", value: @customer.last_name %>
   　</div>
   　
   　<div class="row">
-      <%= f.label :first_name_kana, "フリガナ", class:"offset-1 col-2" %>
+      <%= f.label :first_name_kana, "フリガナ", class:"offset-1 col-3" %>
       （セイ）<%= f.text_field :first_name_kana, class:"col-3", value: @customer.first_name_kana %>
       （メイ）<%= f.text_field :last_name_kana, class:"col-3", value: @customer.last_name_kana %>
     </div>
     
     <div class="row mt-3">
-      <%= f.label :email, "メールアドレス", class:"offset-1 col-2" %>
+      <%= f.label :email, "メールアドレス", class:"offset-1 col-3" %>
       <%= f.text_field :email, class:"col-3", value: @customer.email %>
     </div>
     
     <div class="row mt-3">
-      <%= f.label :postal_code, "郵便番号(ハイフンなし)", class:"offset-1 col-2" %>
+      <%= f.label :postal_code, "郵便番号(ハイフンなし)", class:"offset-1 col-3" %>
       <%= f.text_field :postal_code, class:"col-3", value: @customer.postal_code %>
     </div>
     
     <div class="row mt-3">
-      <%= f.label :address, "住所", class:"offset-1 col-2" %>
+      <%= f.label :address, "住所", class:"offset-1 col-3" %>
       <%= f.text_field :address, class:"col-6", value: @customer.address %>
     </div>
     
     <div class="row mt-3">
-      <%= f.label :telephone_number, "電話番号(ハイフンなし)", class:"offset-1 col-2" %>
+      <%= f.label :telephone_number, "電話番号(ハイフンなし)", class:"offset-1 col-3" %>
       <%= f.text_field :telephone_number, class:"col-3", value: @customer.telephone_number %>
     </div>
     
-    <div class="actions offset-3 mt-3 mb-4">
+    <div class="actions offset-4 mt-3 mb-4">
       <%= f.submit "編集内容を保存"%>
       <%= link_to "退会する", customers_quit_path(current_customer) %>
     </div>
