@@ -16,7 +16,7 @@
   <tbody>
     <% @a_orders.each do |a_order| %>  
       <tr>
-        <td><%= link_to a_order.created_at, admin_a_order_path(a_order.id) %></td>
+        <td><%= link_to a_order.created_at.strftime('%Y/%m/%d'), admin_a_order_path(a_order.id) %></td>
         <td><%= a_order.customer.first_name %> <%= a_order.customer.last_name %></td>
         <td><%= a_order.order_items.all.sum(:quantity) %></td>
         <td>

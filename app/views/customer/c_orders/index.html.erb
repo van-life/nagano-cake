@@ -1,40 +1,50 @@
-<div class="container">
-  <div class="mt-3">
-    <span class="fs-3 offset-md-1 signup-form"><b>注文履歴一覧</b></span>
-  </div>
-  <div class="row mt-3 offset-1">
-    <table class="table tabel-hover table-inverse">
-      <thead>
-        <tr>
-          <th>注文日</th>
-          <th>配送先</th>
-          <th>注文商品</th>
-          <th>支払金額</th>
-          <th>ステータス</th>
-          <th>注文詳細</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @orders.each do |order| %>
-          <tr>
-            <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-            <td>
-              <%= order.postal_code %><br>
-              <%= order.address %> <br>
-              <%= order.name %>
-            </td>
-            <td>
-              <% order.order_items.each do |order_item| %>
-                <%= order_item.item.name %><br>
-              <% end %>
-            </td>
-            <td><%= order.total_price + order.postage %></td>
-            <td><%= order.order_status %></td>
-            <td><%= link_to "表示する", c_order_path(order) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  </div>
-</div>
+
+<h3>注文履歴一覧</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>注文商品</th>
+      <th>支払金額</th>
+      <th>ステータス</th>
+      <th>注文詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+        <td>
+          <%= order.postal_code %><br>
+          <%= order.address %> <br>
+          <%= order.name %>
+        </td>
+        <td>
+          <% order.order_items.each do |order_item| %>
+            <%= order_item.item.name %><br>
+          <% end %>
+        </td>
+        <td><%= order.total_price + order.postage %></td>
+        <td>
+          <% if order.order_status == 0 %>
+            入金待ち
+          <% elsif order.order_status == 1 %>
+            <% if (!order.order_items.where(create_status:1).exists?) && (!order.order_items.where(create_status:2).exists?) %>
+              入金確認
+            <% elsif (!order.order_items.where(create_status:0).exists?) && (!order.order_items.where(create_status:1).exists?) %>
+              発送準備中
+            <% else %>
+              製作中
+            <% end %>
+          <% else %>
+            発送済み
+          <% end %>  
+        </td>
+        <td><%= link_to "表示する", c_order_path(order) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
