@@ -102,6 +102,6 @@
   </tr>
   <tr>
     <th>請求合計額</th>
-    <td><%= (@item.all.sum(:price)) + (@order.postage) %></td>
+    <td><%= (@order.total_price) + (@order.postage) %></td>
   </tr>
 </table>
