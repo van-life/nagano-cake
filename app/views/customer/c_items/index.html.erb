@@ -11,11 +11,7 @@
         <div class="item-index d-flex flex-wrap mt-3">
           <% @items.each do |item| %>
             <div class="card m-2 p-3" style="width: 270px;">
-              <%= link_to c_item_path(item), class: "link-style" do %>
-                <div class="item-img-box2"><%= attachment_image_tag(item, :image, size:"237x158", fallback: "no_image.png")%></div>
-                <p class="item-index-name mt-2 mb-0 text-body"><%= item.name %></p>
-              <% end %>
-              <%= "￥#{item.price*1.1.floor}" %>
+              <%= render "each_item", item: item %>
             </div>
           <% end %>
         </div>
