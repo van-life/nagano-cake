@@ -1,0 +1,6 @@
+<%= link_to c_item_path(item), class: "link-style" do %>
+  <div class="item-img-box2"><%= attachment_image_tag(item, :image, size:"237x158", fallback: "no_image.png")%></div>
+  <p class="item-index-name font-weight-bold text-dark mt-2 mb-1"><b><%= item.name %></b></p>
+<% end %>
+<!--ヘルパーに記述tax()-->
+<%= "￥"+tax(item.price).to_s(:delimited) %>

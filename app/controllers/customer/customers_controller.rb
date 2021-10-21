@@ -2,7 +2,7 @@ class Customer::CustomersController < ApplicationController
   before_action :authenticate_customer!, except: [:top,:about]
   
   def top
-    @items = Item.where(status: true).order(created_at: :desc).limit(4)
+    @items = Item.where(status: true).order(created_at: :desc).limit(8)
     # 全商品か、販売中のものでallかwhere(status: true)、順番は降順:desc,昇順:asc
     @genres = Genre.all
   end

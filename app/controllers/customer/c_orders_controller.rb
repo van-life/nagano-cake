@@ -92,8 +92,4 @@ class Customer::COrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:postal_code, :address, :name, :payment, :total_price)
   end
-
-  def address_params
-    params.require(:order).permit(:postal_code, :address, :name)
-  end
 end

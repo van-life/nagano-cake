@@ -7,14 +7,11 @@
       <div class="col-md-5">
         <div class="item-name"><%= @item.name %></div>
         <div><%= @item.introduction %></div>
-        <div><%= "￥#{@item.price*1.1.floor}" %></div>
-        <!--個数選択-->
-        <!--カートに入れるボタン-->
+        <div><%= "￥"+tax(@item.price).to_s(:delimited) %></div>
         <% if customer_signed_in? %>
           <%= form_with(model: @cart_item , url: cart_items_path, local:true) do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>
             <%= f.select :quantity, options_for_select((1..10).to_a) %><br>
-            <!--配列から選択肢の生成options_for_select-->
             <%= f.submit "カートに入れる" %>
           <% end %>
         <% end %>
