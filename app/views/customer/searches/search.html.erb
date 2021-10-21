@@ -1,0 +1,28 @@
+<% if @datas.empty? %>
+  <div class="top-bg-center">
+    <div class="container p-4 justify-content-center ">
+      <h3 class="text-center text-body">該当する商品はありません</h3>
+    </div>
+  </div>  
+<% else %>
+  <div class="top-bg-center">
+    <div class='container p-4'>
+      <div class='row'>
+        <div class='col-md-12 mx-auto text-center items-all'>
+          <h2 class="mt-3">" <%= @value %> "の検索結果（全 <%= @datas.count %> 件）</h2>
+          <div class="item-index d-flex flex-wrap mt-3">
+            <% @datas.each do |data| %>
+              <div class="card m-2 p-3" style="width: 270px;">
+                <%= link_to c_item_path(data.id), class: "link-style" do %>
+                  <div class="item-img-box2"><%= attachment_image_tag(data, :image, size:"237x158", fallback: "no_image.png")%></div>
+                  <p class="item-index-name mt-2 mb-0 text-body"><%= data.name %></p>
+                <% end %>
+                <%= "￥#{data.price*1.1.floor}" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

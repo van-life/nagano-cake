@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   root to: 'customer/customers#top'
   get 'about' => 'customer/customers#about'
+  get "/search" => "customer/searches#search"
 
   scope module: :customer do
     resource :customers, only: [:show, :edit, :update]
