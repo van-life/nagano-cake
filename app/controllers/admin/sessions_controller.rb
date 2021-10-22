@@ -26,6 +26,6 @@ class Admin::SessionsController < Devise::SessionsController
   # end
   private
   def after_sign_in_path_for(resource) #サインイン後に移行するページ
-     admin_a_items_path
+     admin_a_orders_path
   end
 end
