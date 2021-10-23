@@ -21,11 +21,11 @@
                 <%= cart.item.name %>
               </td>
               <td>
-                <%= cart.item.price*1.1.floor %>
+                ￥<%= tax(cart.item.price).to_s(:delimited) %>
               </td>
               <td><%= cart.quantity %></td>
               <td>
-                <%= cart.item.price*cart.quantity*1.1.floor %>
+                <%= "￥"+price_one(cart).to_s(:delimited) %>
               </td>
             </tr>
             <% end %>
@@ -35,15 +35,15 @@
         <tbody>
           <tr>
             <th>送料</th>
-            <td>¥<%= @order.postage %></td>
+            <td>¥<%= @order.postage.to_s(:delimited) %></td>
           </tr>
           <tr>
             <th>商品合計</th>
-            <td>¥<%= @order.total_price %></td>
+            <td>¥<%= @order.total_price.to_s(:delimited) %></td>
           </tr>
           <tr>
             <th>請求金額</th>
-            <td>¥<%= @order.total_price+@order.postage %></td>
+            <td>¥<%= (@order.total_price+@order.postage).to_s(:delimited) %></td>
           </tr>
           <tr>
             <th>支払方法</th>

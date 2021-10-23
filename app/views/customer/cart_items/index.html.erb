@@ -20,17 +20,16 @@
             <% @cart_items.each do |cart_item| %>
             <tr>
               <td><%= cart_item.item.name %></td>
-              <td><%= cart_item.item.price*1.1.floor %></td>
+              <td>￥<%= tax(cart_item.item.price).to_s(:delimited) %></td>
               <td>
               <%= form_with model:cart_item, local: true do |f| %>
                 <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "#{cart_item.quantity}" %>
                 <%= f.submit "変更", class: "btn btn-sm btn-success" %>
               <% end %>
               </td>
-              <td><%= cart_item.total_price.to_i %></td>
+              <td>￥<%= price_one(cart_item).to_s(:delimited) %></td>
               <td><%= link_to "削除する" , cart_item_path(cart_item.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
             </tr>
-            <% @sum += cart_item.total_price.to_i %>
             <% end %>
           </tr>
         </table>
@@ -41,7 +40,7 @@
       <div class="col-md-3 cart-total">
         <div class="total_price">
           <span>合計金額</span>
-          <span><%= @sum %>円</span>
+          <span><%= price_all(@cart_items) %>円</span>
         </div>
         <div class="cart-links">
           <div class="shopping">
