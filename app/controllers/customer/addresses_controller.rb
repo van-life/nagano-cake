@@ -12,7 +12,7 @@ class Customer::AddressesController < ApplicationController
     if @address.save
       redirect_to addresses_path(current_customer)
     else
-      @address = Address.customer
+      @addresses = Customer.find(current_customer.id).addresses
       render :index
     end
   end

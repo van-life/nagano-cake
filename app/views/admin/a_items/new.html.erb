@@ -3,7 +3,7 @@
     <span class="fs-3 offset-md-1"><b>商品新規登録録</b></span>
   </div>
 
-  <%= form_with model:@a_item, url:admin_a_items_path, local:true do |f| %>
+  <%= form_with model: @a_item, url:admin_a_items_path, local:true do |f| %>
   <div class="row mt-3">
     <%= f.label :image, "商品画像", class:"offset-1 col-3" %>
     <%= f.attachment_field :image, class:"col-6" %>
@@ -18,7 +18,7 @@
   </div>
   <div class="row mt-3">
     <%= f.label :genre_id, "ジャンル", class:"offset-1 col-3" %>
-    <%= f.select:genre_id, @genres.map{ |genre| [genre.name, genre.id] }, {include_blank:'--選択してください--'}, class:"col-3" %>
+    <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id] }, {include_blank:'--選択してください--'}, class:"col-3" %>
   </div>
   <div class="row mt-3">
     <%= f.label :price, "税抜価格", class:"offset-1 col-3" %>
