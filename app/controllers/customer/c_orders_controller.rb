@@ -46,7 +46,7 @@ class Customer::COrdersController < ApplicationController
       @new = "1"
 
       unless @order.valid? == true
-        @ddresses = current_customer.addresses
+        @addresses = current_customer.addresses
         render :new
       end
     end
@@ -67,6 +67,8 @@ class Customer::COrdersController < ApplicationController
         address: @order.address
       )
     end
+
+
 
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
