@@ -46,7 +46,7 @@ class Customer::COrdersController < ApplicationController
       @new = "1"
 
       unless @order.valid? == true
-        @ddresses = current_customer.addresses
+        @addresses = current_customer.addresses
         render :new
       end
     end
