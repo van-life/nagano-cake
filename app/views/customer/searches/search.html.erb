@@ -17,7 +17,7 @@
                   <div class="item-img-box2"><%= attachment_image_tag(data, :image, size:"237x158", fallback: "no_image.png")%></div>
                   <p class="item-index-name mt-2 mb-0 text-body"><%= data.name %></p>
                 <% end %>
-                <%= "￥#{data.price*1.1.floor}" %>
+                <%= "￥"+tax(item.price).to_s(:delimited) %>
               </div>
             <% end %>
           </div>
