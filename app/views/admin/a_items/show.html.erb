@@ -24,7 +24,7 @@
           税込価格（税抜価格）
         </th>
         <td>
-          <%= (@a_item.price * 1.1).floor.to_s(:delimited) %>円（<%= @a_item.price.to_s(:delimited)%>円）
+          <%= tax(@a_item.price).to_s(:delimited) %>円（<%= @a_item.price.to_s(:delimited)%>円）
         </td>
       </tr>
       <tr>

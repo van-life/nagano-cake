@@ -1,8 +1,7 @@
 class Customer::AddressesController < ApplicationController
-  
+
   def index
-    customer = Customer.find(current_customer.id)
-    @addresses = customer.addresses
+    @addresses = current_customer.addresses
     @address = Address.new
   end
 
@@ -40,11 +39,11 @@ class Customer::AddressesController < ApplicationController
     address.destroy
     redirect_to addresses_path(current_customer)
   end
-  
+
   private
-  
+
   def address_params
     params.require(:address).permit(:name, :postal_code, :address)
   end
-  
+
 end
