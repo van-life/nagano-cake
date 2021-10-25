@@ -68,6 +68,8 @@ class Customer::COrdersController < ApplicationController
       )
     end
 
+
+
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
     OrderItem.create(
