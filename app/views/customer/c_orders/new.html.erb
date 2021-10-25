@@ -30,7 +30,7 @@
       <div>
         <%= f.collection_select(:address_id, @addresses, :id, :order_address) %>
       </div>
-    <div>
+    </div>
     <% end %>
     <div class="mt-3">
       <%=f.radio_button :addresses, "new_address" %>
@@ -52,9 +52,8 @@
     </div>
   </div>
   
-  <div class="offset-3 mt-3 mb-4">
+  <div class="offset-4 mt-3 mb-4">
     <%= f.submit "確認画面へ進む", class:"col-3" %>
   </div>
   <% end %>
-
 </div>
