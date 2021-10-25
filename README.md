@@ -1,26 +1,62 @@
-# README
+# Nagano-Cake
+___________
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DMM-WEBCAMPのチーム開発したECサイト！
 
-Things you may want to cover:
+___________
 
-* Ruby version
+## 設計図
+- ER図は[こちら](https://drive.google.com/file/d/1KL5JRue0R4qxf31ChITFntzdmqt1fWbf/view?usp=sharing)
+- テーブル定義書は[こちら](https://docs.google.com/spreadsheets/d/1XNHdZiq5PTODkugJ4J7pTvfzj-HkcKc1Kpo4VdvlIrc/edit?usp=sharing)
+- 詳細設計書は[こちら](https://docs.google.com/spreadsheets/d/1YQowVH7B3rOR6eTbM4y5zItrLdqxEhqiDAvq4S6I7qo/edit?usp=sharing)
 
-* System dependencies
+___________
 
-* Configuration
+## 機能一覧
+カスタマー側
+- ログイン/ログアウト機能
+- 会員登録/退会機能
+- 会員情報編集機能
+- 商品一覧/詳細表示機能
+- カート内に商品追加, カート内商品の一覧表示/編集機能
+- 注文機能（支払い方法や配送先の選択）
+- 配送先追加/編集機能
+- 注文履歴一覧/詳細表示機能
+- 検索機能(商品名、ジャンル名）
+- トップページに新着商品のスライドショー
 
-* Database creation
+アドミン側
+- ログイン/ログアウト機能
+- 注文履歴の一覧/詳細表示機能（注文ステータス, 製作ステータスの切り替えが可能）
+- 会員一覧/詳細表示機能（会員ステータスを有効/退会に切り替えが可能）
+- 商品一覧/詳細表示機能
+- 商品情報変更機能（販売ステータスの変更が可能）
+- 商品のジャンル設定機能
 
-* Database initialization
+___________
 
-* How to run the test suite
+### 環境
+- Ruby2.6.3
+- Rails5.2.6
+- HTML5
+- CSS3
 
-* Services (job queues, cache servers, search engines, etc.)
+___________
 
-* Deployment instructions
+### Gem
+- devise
+- refile
+- refile-mini_magick
+- bootstrap
+- jquery-rails
+- kaminari
+- font-awesome-sass
+- enum_help
 
-* ...
+___________
 
-he
+### 開発メンバー
+- 大沢ちゃん
+- まさや
+- しうへい
+- キロフ

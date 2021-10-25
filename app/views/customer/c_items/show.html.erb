@@ -8,7 +8,7 @@
         <h1><%= @item.name %></h1>
         <div><%= @item.introduction %></div>
         <div>
-          <p>本体価格(税込み)<%= "￥"+tax(@item.price).to_s(:delimited) %></p>
+          <p>本体価格(税込み)￥<%= tax(@item.price).to_s(:delimited) %></p>
         </div>
         <% if customer_signed_in? %>
           <div class="item-buy">

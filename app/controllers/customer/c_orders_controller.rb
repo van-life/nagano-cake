@@ -1,20 +1,21 @@
 class Customer::COrdersController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_customer!
-  
+
   def index
     @orders= current_customer.orders
   end
-  
+
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
   end
-  
+
   def new
     @order = Order.new
     @addresses = current_customer.addresses
   end
-  
+
   def confirm
     @cart_items = current_customer.cart_items
     @order = Order.new(
@@ -22,14 +23,9 @@ class Customer::COrdersController < ApplicationController
       payment: params[:order][:payment]
     )
 
-    price_all = 0
-    @cart_items.each do |cart_item| 
-      price_all += (cart_item.item.price * cart_item.quantity)
-    end
-    
-    @order.total_price = price_all*1.1.floor
-    
-    
+    @order.total_price = price_all(@cart_items)
+
+
     if params[:order][:addresses] == "current_customer_address"
       @order.postal_code = current_customer.postal_code
       @order.address     = current_customer.address
@@ -48,15 +44,15 @@ class Customer::COrdersController < ApplicationController
       @order.address     = params[:order][:address]
       @order.name        = params[:order][:name]
       @new = "1"
-      
+
       unless @order.valid? == true
-        @ddresses = current_customer.addresses
+        @addresses = current_customer.addresses
         render :new
       end
     end
   end
-  
-  
+
+
   def create
     @order = current_customer.orders.new(order_params)
     @order.save
@@ -72,6 +68,8 @@ class Customer::COrdersController < ApplicationController
       )
     end
 
+
+
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
     OrderItem.create(
@@ -83,10 +81,10 @@ class Customer::COrdersController < ApplicationController
     end
     @cart_items.destroy_all
   end
-  
+
   def thanks
   end
-  
+
   private
 
   def order_params

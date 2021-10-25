@@ -1,11 +1,10 @@
 class Customer::CartItemsController < ApplicationController
   before_action :authenticate_customer!
-    
+
   def index
-    customer = Customer.find(current_customer.id)
-    @cart_items = customer.cart_items
+    @cart_items = current_customer.cart_items
   end
-  
+
   def create
     cart_item = CartItem.new(cart_item_params)
     cart_item.customer_id = current_customer.id
@@ -15,7 +14,7 @@ class Customer::CartItemsController < ApplicationController
       render :index
     end
   end
-  
+
   def update
     cart_item = CartItem.find(params[:id])
     if cart_item.update(cart_item_params)
@@ -24,24 +23,23 @@ class Customer::CartItemsController < ApplicationController
       render :index
     end
   end
-  
+
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
      redirect_to cart_items_path
   end
-  
+
   def all_destroy
-    customer = Customer.find(current_customer.id)
-    cart_items = customer.cart_items
+    cart_items = current_customer.cart_items
     cart_items.destroy_all
     redirect_to cart_items_path
   end
-  
-  private 
-  
+
+  private
+
   def cart_item_params
     params.require(:cart_item).permit(:quantity, :item_id)
   end
-  
+
 end
