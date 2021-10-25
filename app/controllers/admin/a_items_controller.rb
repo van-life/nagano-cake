@@ -15,7 +15,7 @@ class Admin::AItemsController < ApplicationController
     if @a_item.save
       redirect_to admin_a_item_path(@a_item.id)
     else
-      render :new
+      redirect_to admin_a_items_path
     end
   end
 
@@ -31,7 +31,7 @@ class Admin::AItemsController < ApplicationController
   def update
     @a_item = Item.find(params[:id])
     @a_item.update(item_params)
-    redirect_to admin_a_items_path
+    redirect_to admin_a_item_path(item_params)
   end
 
   def destroy

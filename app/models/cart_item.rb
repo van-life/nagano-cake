@@ -4,6 +4,7 @@ class CartItem < ApplicationRecord
 
   validates :customer_id, :item_id, :quantity, presence: true
 
+
   def total_price
     item.price*1.1*quantity.floor
   end

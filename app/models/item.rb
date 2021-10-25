@@ -6,4 +6,6 @@ class Item < ApplicationRecord
   has_many :cart_item, dependent: :destroy
   
   attachment :image
+  
+  validates :name, :introduction, :genre_id, :price, presence: true
 end
